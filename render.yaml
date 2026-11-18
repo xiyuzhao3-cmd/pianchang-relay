@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: pianchang-relay
+    env: python
+    buildCommand: apt-get update -qq && apt-get install -y -qq ffmpeg || true
+    startCommand: python3 server.py
+    envVars:
+      - key: CLIENT_TOKEN
+        generateValue: true
+      - key: MUSE_TOKEN
+        generateValue: true
+      - key: SIGNING_KEY
+        generateValue: true
+      - key: PUBLIC_BASE_URL
+        value: https://pianchang-relay.onrender.com
+      - key: ALLOWED_ORIGIN
+        value: https://pianchang-education-demo.rtt0.chatgpt.site
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATA_DIR
+        value: ./data
+      - key: RESULT_HOST_ALLOWLIST
+        value: ""
